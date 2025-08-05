@@ -1,384 +1,373 @@
-import { Metadata } from 'next'
-import { ArrowRight, Target, TrendingUp, Users, Award, Globe, BarChart3, Zap, Shield, BookOpen, Lightbulb, Heart } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import Image from 'next/image'
-
-export const metadata: Metadata = {
-  title: 'Digital Marketing Services | Elevar - Practical Solutions for SMEs',
-  description: 'Affordable, practical digital marketing services for SMEs. WordPress development, SEO, social media marketing, content creation, and paid advertising with professional supervision.',
-  keywords: [
-    'WordPress development',
-    'SEO services',
-    'social media marketing',
-    'content creation',
-    'paid advertising',
-    'affordable marketing services',
-    'SME marketing',
-    'practical marketing solutions'
-  ],
-  openGraph: {
-    title: 'Digital Marketing Services | Elevar - Practical Solutions for SMEs',
-    description: 'Affordable, practical digital marketing services for SMEs. WordPress development, SEO, social media marketing, content creation, and paid advertising.',
-    url: 'https://elevar-digital.com/services',
-    siteName: 'Elevar Digital Marketing',
-    images: [
-      {
-        url: '/services-og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Digital Marketing Services',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  alternates: {
-    canonical: '/services',
-  },
-}
-
-const services = [
-  {
-    icon: Globe,
-    title: 'WordPress Development',
-    description: 'Custom WordPress websites designed for conversion, built with modern technologies and optimized for performance.',
-    features: [
-      'Custom website design',
-      'E-commerce development',
-      'Mobile-first responsive design',
-      'Performance optimization',
-      'Ongoing maintenance'
-    ],
-    price: 'From SGD 2,500'
-  },
-  {
-    icon: Target,
-    title: 'SEO Optimization',
-    description: 'Improve your search engine rankings and drive organic traffic with our comprehensive SEO strategies.',
-    features: [
-      'Technical SEO optimization',
-      'On-page SEO improvements',
-      'Content strategy development',
-      'Local SEO optimization',
-      'SEO audits and reporting'
-    ],
-    price: 'From SGD 1,200/month'
-  },
-  {
-    icon: Users,
-    title: 'Social Media Marketing',
-    description: 'Build brand awareness and engage with your audience across all major social media platforms.',
-    features: [
-      'Content creation & curation',
-      'Community management',
-      'Paid social advertising',
-      'Influencer partnerships',
-      'Analytics & reporting'
-    ],
-    price: 'From SGD 800/month'
-  },
-  {
-    icon: BarChart3,
-    title: 'Content Creation',
-    description: 'Strategic content creation that attracts, engages, and converts your target audience.',
-    features: [
-      'Content strategy development',
-      'Blog writing & management',
-      'Email marketing campaigns',
-      'Video content creation',
-      'Content performance tracking'
-    ],
-    price: 'From SGD 600/month'
-  },
-  {
-    icon: TrendingUp,
-    title: 'Paid Advertising',
-    description: 'Targeted paid advertising campaigns that deliver measurable results and maximize your ROI.',
-    features: [
-      'Google Ads management',
-      'Facebook & Instagram ads',
-      'Remarketing campaigns',
-      'A/B testing & optimization',
-      'Performance tracking'
-    ],
-    price: 'From SGD 1,000/month'
-  },
-  {
-    icon: Lightbulb,
-    title: 'Digital Consultancy',
-    description: 'Strategic guidance, audits, and digital planning to help businesses understand and act on what matters most.',
-    features: [
-      'Digital strategy development',
-      'Marketing audits',
-      'Competitor analysis',
-      'ROI optimization',
-      'Growth planning'
-    ],
-    price: 'From SGD 1,500'
-  }
-]
+import { Button } from '@/components/ui/button'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Menu, Target, Lightbulb, BookOpen, CheckCircle, ArrowRight, Globe, Search, Share2, Monitor, Smartphone, BarChart3, Users, Zap, Award } from 'lucide-react'
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-[#151F34] text-white">
-      {/* Structured Data for Services */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "name": "Digital Marketing Services",
-            "description": "Practical digital marketing services offered by Elevar Digital Marketing for SMEs",
-            "itemListElement": services.map((service, index) => ({
-              "@type": "Service",
-              "position": index + 1,
-              "name": service.title,
-              "description": service.description,
-              "provider": {
-                "@type": "Organization",
-                "name": "Elevar Digital Marketing"
-              },
-              "offers": {
-                "@type": "Offer",
-                "price": service.price,
-                "priceCurrency": "SGD"
-              }
-            }))
-          })
-        }}
-      />
-
+    <div className="bg-[#151F34] text-white pt-20">
       {/* Header */}
-      <header className="relative flex h-20 w-full items-center px-6 md:px-12">
-        {/* Left side - empty space */}
-        <div className="flex-1"></div>
-        
-        {/* Center - logo */}
-        <div className="absolute left-1/2 transform -translate-x-1/2">
-          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
-            <Image 
-              src="/logo.png" 
-              alt="Elevar Digital Marketing" 
-              width={100} 
-              height={32} 
-              className="h-8 w-auto brightness-0 invert"
-              priority
-            />
-          </Link>
-        </div>
+      <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out" id="navbar">
+        <div className="relative flex h-20 w-full items-center px-6 md:px-12 bg-[#151F34]/95 backdrop-blur-sm border-b border-[#2850E5]/20">
+          {/* Left side - empty space */}
+          <div className="flex-1"></div>
+          
+          {/* Center - logo */}
+          <div className="absolute left-1/2 transform -translate-x-1/2">
+            <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+              <Image 
+                src="/logo.png" 
+                alt="Elevar Digital Marketing" 
+                width={100} 
+                height={32} 
+                className="h-8 w-auto brightness-0 invert"
+                priority
+              />
+            </Link>
+          </div>
 
-        {/* Right side - navigation */}
-        <div className="flex-1 flex justify-end items-center gap-8">
-          <nav className="hidden md:flex gap-8">
-            <Link href="/services" className="brand-accent">Services</Link>
-            <Link href="/portfolio" className="hover:text-[#2FDAA9] transition-colors">Portfolio</Link>
-            <Link href="/about" className="hover:text-[#2FDAA9] transition-colors">About</Link>
-            <Link href="/contact" className="hover:text-[#2FDAA9] transition-colors">Contact</Link>
-          </nav>
+          {/* Right side - contact button and hamburger menu */}
+          <div className="flex-1 flex justify-end items-center gap-4">
+            <Button
+              variant="outline"
+              className="border-[#2850E5] text-white hover:bg-[#2513FF] bg-transparent"
+              asChild
+            >
+              <Link href="/contact">Contact Us</Link>
+            </Button>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-white hover:text-[#2FDAA9] border border-[#2850E5]/20 hover:border-[#2FDAA9] p-2">
+                  <Menu className="h-8 w-8" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] bg-[#151F34] border-l border-[#2850E5]/20">
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-center mb-8">
+                    <Image
+                      src="/logo.png"
+                      alt="Elevar"
+                      width={120}
+                      height={40}
+                      className="brightness-0 invert"
+                    />
+                  </div>
+                  <nav className="flex flex-col space-y-4">
+                    <Link href="/" className="text-white hover:text-[#2FDAA9] transition-colors font-inter">
+                      Home
+                    </Link>
+                    <Link href="/about" className="text-white hover:text-[#2FDAA9] transition-colors font-inter">
+                      About Us
+                    </Link>
+                    <Link href="/services" className="text-[#2FDAA9] font-inter">
+                      Services
+                    </Link>
+                    <Link href="/contact" className="text-white hover:text-[#2FDAA9] transition-colors font-inter">
+                      Contact Us
+                    </Link>
+                  </nav>
+                  <div className="mt-auto">
+                    <Button className="w-full bg-[#2FDAA9] hover:bg-[#2FDAA9]/90 text-[#151F34] font-inter-semibold">
+                      Get Started
+                    </Button>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="px-6 md:px-12 py-16 md:py-24">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight mb-8">
-            Practical <span className="brand-accent">digital marketing services</span>
-          </h1>
-          <p className="text-xl text-gray-400 mb-12 max-w-3xl mx-auto">
-            Affordable, accessible, and results-oriented marketing solutions designed for SMEs. 
-            Our supervised team delivers quality outcomes while contributing to Singapore's inclusive economy.
-          </p>
-        </div>
-      </section>
+      {/* Main Content */}
+      <div>
+        {/* Hero Section */}
+        <section className="px-6 md:px-12 py-16 md:py-24">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-inter-semibold leading-tight mb-8 text-balance tracking-tight">
+                Our <span className="brand-accent font-inter-semibold">Services</span>
+              </h1>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto font-inter leading-relaxed">
+                Comprehensive digital marketing solutions delivered by supervised learners under expert guidance
+              </p>
+            </div>
 
-      {/* Services Grid */}
-      <section className="px-6 md:px-12 py-16 md:py-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="bg-[#1a2a4a] p-8 rounded-lg card-hover">
-                <div className="w-16 h-16 bg-[#2FDAA9] rounded-lg flex items-center justify-center mb-6">
-                  <service.icon className="w-8 h-8 text-[#151F34]" />
+            {/* Service Categories */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+              <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                <div className="w-16 h-16 bg-[#2FDAA9] rounded-full flex items-center justify-center mb-6">
+                  <Target className="w-8 h-8 text-[#151F34]" />
                 </div>
-                <h3 className="text-2xl font-medium mb-4 brand-accent">{service.title}</h3>
-                <p className="text-gray-400 mb-6 leading-relaxed">{service.description}</p>
-                
-                <ul className="space-y-3 mb-6">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-gray-300">
-                      <Shield className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
+                <h3 className="text-2xl font-inter-semibold mb-4 brand-accent">Agency Services</h3>
+                <p className="text-gray-400 mb-6 font-inter">
+                  Professional digital marketing services executed by our supervised team
+                </p>
+                <ul className="space-y-3 text-sm text-gray-300 font-inter">
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                    Website development
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                    SEO optimization
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                    Social media marketing
+                  </li>
                 </ul>
-                
-                <div className="flex items-center justify-between">
-                  <span className="brand-accent font-medium">{service.price}</span>
-                  <Button variant="primary" size="sm" asChild>
-                    <Link href="/contact">
-                      Get Started
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
-                  </Button>
+              </div>
+
+              <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                <div className="w-16 h-16 bg-[#2FDAA9] rounded-full flex items-center justify-center mb-6">
+                  <Lightbulb className="w-8 h-8 text-[#151F34]" />
+                </div>
+                <h3 className="text-2xl font-inter-semibold mb-4 brand-accent">Consultancy</h3>
+                <p className="text-gray-400 mb-6 font-inter">
+                  Strategic guidance and digital planning for your business growth
+                </p>
+                <ul className="space-y-3 text-sm text-gray-300 font-inter">
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                    Digital strategy
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                    Marketing audits
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                    Growth planning
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                <div className="w-16 h-16 bg-[#2FDAA9] rounded-full flex items-center justify-center mb-6">
+                  <BookOpen className="w-8 h-8 text-[#151F34]" />
+                </div>
+                <h3 className="text-2xl font-inter-semibold mb-4 brand-accent">Training</h3>
+                <p className="text-gray-400 mb-6 font-inter">
+                  Real-world experience for aspiring marketers on client projects
+                </p>
+                <ul className="space-y-3 text-sm text-gray-300 font-inter">
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                    Hands-on learning
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                    Expert supervision
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                    Career development
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Detailed Services */}
+            <div className="mb-16">
+              <h2 className="text-3xl md:text-4xl font-inter-semibold mb-12 text-center">
+                Detailed <span className="brand-accent font-inter-semibold">Services</span>
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                 {/* Web Development */}
+                 <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 bg-[#2FDAA9] rounded-lg flex items-center justify-center mr-4">
+                      <Globe className="w-6 h-6 text-[#151F34]" />
+                    </div>
+                    <h3 className="text-xl font-inter-semibold brand-accent">Web Development</h3>
+                  </div>
+                  <p className="text-gray-400 mb-4 font-inter">
+                    Modern, responsive websites built with the latest technologies
+                  </p>
+                  <ul className="space-y-2 text-sm text-gray-300 font-inter">
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      WordPress development
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      Custom web applications
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      E-commerce solutions
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      Mobile-responsive design
+                    </li>
+                  </ul>
+                </div>
+
+                                 {/* SEO Optimization */}
+                 <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 bg-[#2FDAA9] rounded-lg flex items-center justify-center mr-4">
+                      <Search className="w-6 h-6 text-[#151F34]" />
+                    </div>
+                    <h3 className="text-xl font-inter-semibold brand-accent">SEO Optimization</h3>
+                  </div>
+                  <p className="text-gray-400 mb-4 font-inter">
+                    Improve your search rankings and drive organic traffic
+                  </p>
+                  <ul className="space-y-2 text-sm text-gray-300 font-inter">
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      Technical SEO audit
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      On-page optimization
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      Content strategy
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      Local SEO
+                    </li>
+                  </ul>
+                </div>
+
+                                 {/* Social Media Marketing */}
+                 <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 bg-[#2FDAA9] rounded-lg flex items-center justify-center mr-4">
+                      <Share2 className="w-6 h-6 text-[#151F34]" />
+                    </div>
+                    <h3 className="text-xl font-inter-semibold brand-accent">Social Media Marketing</h3>
+                  </div>
+                  <p className="text-gray-400 mb-4 font-inter">
+                    Build your brand presence across all social platforms
+                  </p>
+                  <ul className="space-y-2 text-sm text-gray-300 font-inter">
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      Content creation
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      Community management
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      Paid advertising
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      Influencer partnerships
+                    </li>
+                  </ul>
+                </div>
+
+                                 {/* Digital Analytics */}
+                 <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 bg-[#2FDAA9] rounded-lg flex items-center justify-center mr-4">
+                      <BarChart3 className="w-6 h-6 text-[#151F34]" />
+                    </div>
+                    <h3 className="text-xl font-inter-semibold brand-accent">Digital Analytics</h3>
+                  </div>
+                  <p className="text-gray-400 mb-4 font-inter">
+                    Data-driven insights to optimize your marketing performance
+                  </p>
+                  <ul className="space-y-2 text-sm text-gray-300 font-inter">
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      Google Analytics setup
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      Performance tracking
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      Conversion optimization
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                      ROI reporting
+                    </li>
+                  </ul>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
 
-      {/* Value Proposition Section */}
-      <section className="px-6 md:px-12 py-16 md:py-24 bg-[#1a2a4a]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6">
-              Why choose <span className="brand-accent">Elevar</span>?
+            {/* Process Section */}
+                         <div className="bg-[#151F34] p-8 md:p-12 rounded-lg border border-[#2FDAA9]/20 mb-16 card-hover">
+              <h2 className="text-3xl md:text-4xl font-inter-semibold mb-8 text-center">
+                Our <span className="brand-accent font-inter-semibold">Process</span>
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-[#2FDAA9] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Users className="w-8 h-8 text-[#151F34]" />
+                  </div>
+                  <h4 className="font-inter-semibold mb-2">Discovery</h4>
+                  <p className="text-gray-400 text-sm font-inter">
+                    Understanding your business needs and goals
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-[#2FDAA9] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Lightbulb className="w-8 h-8 text-[#151F34]" />
+                  </div>
+                  <h4 className="font-inter-semibold mb-2">Strategy</h4>
+                  <p className="text-gray-400 text-sm font-inter">
+                    Developing a customized marketing plan
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-[#2FDAA9] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Zap className="w-8 h-8 text-[#151F34]" />
+                  </div>
+                  <h4 className="font-inter-semibold mb-2">Execution</h4>
+                  <p className="text-gray-400 text-sm font-inter">
+                    Implementing solutions with expert supervision
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-[#2FDAA9] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Award className="w-8 h-8 text-[#151F34]" />
+                  </div>
+                  <h4 className="font-inter-semibold mb-2">Optimization</h4>
+                  <p className="text-gray-400 text-sm font-inter">
+                    Continuous improvement and performance tracking
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="px-6 md:px-12 py-16 md:py-24 bg-[#1a2a4a]">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-inter-semibold mb-6">
+              Ready to <span className="brand-accent font-inter-semibold">Get Started</span>?
             </h2>
-            <p className="text-xl text-gray-400">
-              We bridge the gap between marketing education and industry application
+            <p className="text-xl text-gray-400 mb-8 font-inter">
+              Let's discuss how our services can help your business grow
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#2FDAA9] rounded-full flex items-center justify-center mx-auto mb-6">
-                <Heart className="w-8 h-8 text-[#151F34]" />
-              </div>
-              <h3 className="text-xl font-medium mb-4 brand-accent">Affordable Excellence</h3>
-              <p className="text-gray-400">
-                Quality marketing services at accessible price points, designed specifically for SMEs and budget-conscious businesses.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#2850E5] rounded-full flex items-center justify-center mx-auto mb-6">
-                <BookOpen className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-medium mb-4 brand-primary">Professional Supervision</h3>
-              <p className="text-gray-400">
-                All work is executed under expert supervision, ensuring quality outcomes while providing learning opportunities.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#2513FF] rounded-full flex items-center justify-center mx-auto mb-6">
-                <Lightbulb className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-medium mb-4 brand-secondary">Social Impact</h3>
-              <p className="text-gray-400">
-                Contributing to Singapore's inclusive economy by training aspiring marketers through real client work.
-              </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="bg-[#2FDAA9] hover:bg-[#2FDAA9]/90 text-[#151F34] font-inter-semibold px-8 py-3">
+                Get Free Consultation
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button variant="outline" className="border-[#2FDAA9] text-[#2FDAA9] hover:bg-[#2FDAA9] hover:text-[#151F34] font-inter-semibold px-8 py-3">
+                View Pricing
+              </Button>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="px-6 md:px-12 py-16 md:py-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6">
-              Our inclusive productivity approach
-            </h2>
-            <p className="text-xl text-gray-400">
-              A proven methodology that delivers results for both clients and learners
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#2FDAA9] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-[#151F34]">1</span>
-              </div>
-              <h3 className="text-xl font-medium mb-4">Discovery</h3>
-              <p className="text-gray-400">
-                We analyze your business needs and match you with the right supervised team for your project.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#2850E5] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-white">2</span>
-              </div>
-              <h3 className="text-xl font-medium mb-4">Strategy</h3>
-              <p className="text-gray-400">
-                We create a customized marketing plan tailored to your specific goals and budget constraints.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#2513FF] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-white">3</span>
-              </div>
-              <h3 className="text-xl font-medium mb-4">Execution</h3>
-              <p className="text-gray-400">
-                Our supervised team implements your strategy with precision, learning while delivering quality results.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#FAFF83] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-[#151F34]">4</span>
-              </div>
-              <h3 className="text-xl font-medium mb-4">Optimization</h3>
-              <p className="text-gray-400">
-                We continuously monitor, analyze, and optimize your campaigns for maximum performance and learning.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="px-6 md:px-12 py-16 md:py-24">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-8">
-            Ready to grow your business?
-          </h2>
-          <p className="text-xl text-gray-400 mb-8">
-            Let's discuss how our practical digital marketing services can help you achieve your goals.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-[#2FDAA9] text-[#151F34] hover:bg-[#FAFF83] font-medium" asChild>
-              <Link href="/contact">
-                Start Your Project
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-[#2850E5] text-white hover:bg-[#2513FF] bg-transparent" asChild>
-              <Link href="/portfolio">View Our Work</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="px-6 md:px-12 py-8 border-t border-[#2850E5]">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center">
-            <Image 
-              src="/logo.png" 
-              alt="Elevar Digital Marketing" 
-              width={80} 
-              height={24} 
-              className="h-6 w-auto brightness-0 invert"
-            />
-          </div>
-          <div className="flex gap-6 text-sm text-gray-400">
-            <Link href="/privacy" className="hover:text-[#2FDAA9] transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-[#2FDAA9] transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="/contact" className="hover:text-[#2FDAA9] transition-colors">
-              Contact
-            </Link>
-          </div>
-        </div>
-      </footer>
+        </section>
+      </div>
     </div>
   )
 } 

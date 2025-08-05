@@ -1,374 +1,322 @@
-import { Metadata } from 'next'
-import { ArrowRight, Mail, Phone, MapPin, Clock, Send } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import Image from 'next/image'
-
-export const metadata: Metadata = {
-  title: 'Contact Us | Elevar Digital Marketing Agency',
-  description: 'Get in touch with Elevar Digital Marketing. We\'re here to help SMEs grow with practical marketing solutions and provide mentorship for aspiring marketers. Contact us today for a free consultation.',
-  keywords: [
-    'contact digital marketing agency',
-    'SME marketing consultation',
-    'WordPress development consultation',
-    'SEO consultation Singapore',
-    'marketing mentorship contact',
-    'free consultation'
-  ],
-  openGraph: {
-    title: 'Contact Us | Elevar Digital Marketing Agency',
-    description: 'Get in touch with Elevar Digital Marketing. We\'re here to help SMEs grow with practical marketing solutions and provide mentorship for aspiring marketers.',
-    url: 'https://elevar-digital.com/contact',
-    siteName: 'Elevar Digital Marketing',
-    images: [
-      {
-        url: '/contact-og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Contact Elevar Digital Marketing',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  alternates: {
-    canonical: '/contact',
-  },
-}
+import { Button } from '@/components/ui/button'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Menu, Mail, Phone, MapPin, Clock, MessageSquare, ArrowRight, Send } from 'lucide-react'
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-[#151F34] text-white">
-      {/* Structured Data for Contact */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ContactPage",
-            "name": "Contact Elevar Digital Marketing",
-            "description": "Contact page for Elevar Digital Marketing Agency",
-            "url": "https://elevar-digital.com/contact",
-            "mainEntity": {
-              "@type": "Organization",
-              "name": "Elevar Digital Marketing",
-              "contactPoint": [
-                {
-                  "@type": "ContactPoint",
-                  "telephone": "+65-XXXX-XXXX",
-                  "contactType": "customer service",
-                  "availableLanguage": "English"
-                },
-                {
-                  "@type": "ContactPoint",
-                  "email": "hello@elevar-digital.com",
-                  "contactType": "customer service"
-                }
-              ],
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "123 Digital Street",
-                "addressLocality": "Singapore",
-                "postalCode": "123456",
-                "addressCountry": "SG"
-              }
-            }
-          })
-        }}
-      />
-
+    <div className="bg-[#151F34] text-white pt-20">
       {/* Header */}
-      <header className="relative flex h-20 w-full items-center px-6 md:px-12">
-        {/* Left side - empty space */}
-        <div className="flex-1"></div>
-        
-        {/* Center - logo */}
-        <div className="absolute left-1/2 transform -translate-x-1/2">
-          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
-            <Image 
-              src="/logo.png" 
-              alt="Elevar Digital Marketing" 
-              width={100} 
-              height={32} 
-              className="h-8 w-auto brightness-0 invert"
-              priority
-            />
-          </Link>
-        </div>
+      <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out" id="navbar">
+        <div className="relative flex h-20 w-full items-center px-6 md:px-12 bg-[#151F34]/95 backdrop-blur-sm border-b border-[#2850E5]/20">
+          {/* Left side - empty space */}
+          <div className="flex-1"></div>
+          
+          {/* Center - logo */}
+          <div className="absolute left-1/2 transform -translate-x-1/2">
+            <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+              <Image 
+                src="/logo.png" 
+                alt="Elevar Digital Marketing" 
+                width={100} 
+                height={32} 
+                className="h-8 w-auto brightness-0 invert"
+                priority
+              />
+            </Link>
+          </div>
 
-        {/* Right side - navigation */}
-        <div className="flex-1 flex justify-end items-center gap-8">
-          <nav className="hidden md:flex gap-8">
-            <Link href="/services" className="hover:text-[#2FDAA9] transition-colors">Services</Link>
-            <Link href="/portfolio" className="hover:text-[#2FDAA9] transition-colors">Portfolio</Link>
-            <Link href="/about" className="hover:text-[#2FDAA9] transition-colors">About</Link>
-            <Link href="/contact" className="brand-accent">Contact</Link>
-          </nav>
+          {/* Right side - contact button and hamburger menu */}
+          <div className="flex-1 flex justify-end items-center gap-4">
+            <Button
+              variant="outline"
+              className="border-[#2850E5] text-white hover:bg-[#2513FF] bg-transparent"
+              asChild
+            >
+              <Link href="/contact">Contact Us</Link>
+            </Button>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-white hover:text-[#2FDAA9] border border-[#2850E5]/20 hover:border-[#2FDAA9] p-2">
+                  <Menu className="h-8 w-8" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] bg-[#151F34] border-l border-[#2850E5]/20">
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-center mb-8">
+                    <Image
+                      src="/logo.png"
+                      alt="Elevar"
+                      width={120}
+                      height={40}
+                      className="brightness-0 invert"
+                    />
+                  </div>
+                  <nav className="flex flex-col space-y-4">
+                    <Link href="/" className="text-white hover:text-[#2FDAA9] transition-colors font-inter">
+                      Home
+                    </Link>
+                    <Link href="/about" className="text-white hover:text-[#2FDAA9] transition-colors font-inter">
+                      About Us
+                    </Link>
+                    <Link href="/services" className="text-white hover:text-[#2FDAA9] transition-colors font-inter">
+                      Services
+                    </Link>
+                    <Link href="/contact" className="text-[#2FDAA9] font-inter">
+                      Contact Us
+                    </Link>
+                  </nav>
+                  <div className="mt-auto">
+                    <Button className="w-full bg-[#2FDAA9] hover:bg-[#2FDAA9]/90 text-[#151F34] font-inter-semibold">
+                      Get Started
+                    </Button>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="px-6 md:px-12 py-16 md:py-24">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight mb-8">
-            Let's <span className="brand-accent">connect</span>
-          </h1>
-          <p className="text-xl text-gray-400 mb-12 max-w-3xl mx-auto">
-            Ready to grow your business or start your marketing journey? Get in touch with our team of experts 
-            and let's discuss how we can help you achieve practical, measurable results.
-          </p>
-        </div>
-      </section>
-
-      {/* Contact Form & Info */}
-      <section className="px-6 md:px-12 py-16 md:py-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Form */}
-            <div>
-              <h2 className="text-3xl font-light mb-8">Send us a message</h2>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium mb-2">
-                      First Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      required
-                      className="w-full px-4 py-3 bg-[#1a2a4a] border border-[#2850E5] rounded-lg focus:outline-none focus:border-[#2FDAA9] transition-colors"
-                      placeholder="Your first name"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium mb-2">
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      required
-                      className="w-full px-4 py-3 bg-[#1a2a4a] border border-[#2850E5] rounded-lg focus:outline-none focus:border-[#2FDAA9] transition-colors"
-                      placeholder="Your last name"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 bg-[#1a2a4a] border border-[#2850E5] rounded-lg focus:outline-none focus:border-[#2FDAA9] transition-colors"
-                    placeholder="your.email@company.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium mb-2">
-                    Company Name
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    className="w-full px-4 py-3 bg-[#1a2a4a] border border-[#2850E5] rounded-lg focus:outline-none focus:border-[#2FDAA9] transition-colors"
-                    placeholder="Your company name"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium mb-2">
-                    Service of Interest
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    className="w-full px-4 py-3 bg-[#1a2a4a] border border-[#2850E5] rounded-lg focus:outline-none focus:border-[#2FDAA9] transition-colors"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="wordpress">WordPress Development</option>
-                    <option value="seo">SEO Optimization</option>
-                    <option value="social-media">Social Media Marketing</option>
-                    <option value="content">Content Creation</option>
-                    <option value="paid-advertising">Paid Advertising</option>
-                    <option value="consultancy">Digital Consultancy</option>
-                    <option value="mentorship">Marketing Mentorship</option>
-                    <option value="consultation">General Consultation</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    required
-                    className="w-full px-4 py-3 bg-[#1a2a4a] border border-[#2850E5] rounded-lg focus:outline-none focus:border-[#2FDAA9] transition-colors resize-none"
-                    placeholder="Tell us about your project and goals..."
-                  ></textarea>
-                </div>
-
-                <Button type="submit" size="lg" className="w-full bg-[#2FDAA9] text-[#151F34] hover:bg-[#FAFF83] font-medium">
-                  Send Message
-                  <Send className="ml-2 w-5 h-5" />
-                </Button>
-              </form>
+      {/* Main Content */}
+      <div>
+        {/* Hero Section */}
+        <section className="px-6 md:px-12 py-16 md:py-24">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-inter-semibold leading-tight mb-8 text-balance tracking-tight">
+                Get in <span className="brand-accent font-inter-semibold">Touch</span>
+              </h1>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto font-inter leading-relaxed">
+                Ready to start your digital marketing journey? Let's discuss how we can help your business grow.
+              </p>
             </div>
 
-            {/* Contact Information */}
-            <div>
-              <h2 className="text-3xl font-light mb-8">Get in touch</h2>
+            {/* Contact Form & Info */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {/* Contact Form */}
+              <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                <h2 className="text-2xl font-inter-semibold mb-6 brand-accent">Send us a Message</h2>
+                <form className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="firstName" className="block text-sm font-inter-semibold mb-2">
+                        First Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        required
+                        className="w-full px-4 py-3 bg-[#1a2a4a] border border-[#2850E5]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#2FDAA9] transition-colors font-inter"
+                        placeholder="Your first name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="lastName" className="block text-sm font-inter-semibold mb-2">
+                        Last Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        required
+                        className="w-full px-4 py-3 bg-[#1a2a4a] border border-[#2850E5]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#2FDAA9] transition-colors font-inter"
+                        placeholder="Your last name"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-inter-semibold mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-3 bg-[#1a2a4a] border border-[#2850E5]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#2FDAA9] transition-colors font-inter"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-inter-semibold mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      className="w-full px-4 py-3 bg-[#1a2a4a] border border-[#2850E5]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#2FDAA9] transition-colors font-inter"
+                      placeholder="+65 9123 4567"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-inter-semibold mb-2">
+                      Company Name
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      className="w-full px-4 py-3 bg-[#1a2a4a] border border-[#2850E5]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#2FDAA9] transition-colors font-inter"
+                      placeholder="Your company name"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="service" className="block text-sm font-inter-semibold mb-2">
+                      Service Interest
+                    </label>
+                    <select
+                      id="service"
+                      name="service"
+                      className="w-full px-4 py-3 bg-[#1a2a4a] border border-[#2850E5]/20 rounded-lg text-white focus:outline-none focus:border-[#2FDAA9] transition-colors font-inter"
+                    >
+                      <option value="">Select a service</option>
+                      <option value="web-development">Web Development</option>
+                      <option value="seo">SEO Optimization</option>
+                      <option value="social-media">Social Media Marketing</option>
+                      <option value="consultancy">Digital Consultancy</option>
+                      <option value="analytics">Digital Analytics</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-inter-semibold mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={5}
+                      required
+                      className="w-full px-4 py-3 bg-[#1a2a4a] border border-[#2850E5]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#2FDAA9] transition-colors font-inter resize-none"
+                      placeholder="Tell us about your project and how we can help..."
+                    ></textarea>
+                  </div>
+
+                  <Button type="submit" className="w-full bg-[#2FDAA9] hover:bg-[#2FDAA9]/90 text-[#151F34] font-inter-semibold py-3">
+                    Send Message
+                    <Send className="ml-2 h-4 w-4" />
+                  </Button>
+                </form>
+              </div>
+
+              {/* Contact Information */}
               <div className="space-y-8">
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-[#2FDAA9] rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                    <Mail className="w-6 h-6 text-[#151F34]" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-medium mb-2">Email</h3>
-                    <p className="text-gray-400 mb-1">hello@elevar-digital.com</p>
-                    <p className="text-gray-400">We'll respond within 24 hours</p>
+                                   <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                     <h3 className="text-xl font-inter-semibold mb-6 brand-accent">Contact Information</h3>
+                  <div className="space-y-6">
+                    <div className="flex items-start">
+                      <div className="w-12 h-12 bg-[#2FDAA9] rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <Mail className="w-6 h-6 text-[#151F34]" />
+                      </div>
+                      <div>
+                        <h4 className="font-inter-semibold mb-1">Email</h4>
+                        <p className="text-gray-400 font-inter">hello@elevar-digital.com</p>
+                        <p className="text-gray-400 font-inter">support@elevar-digital.com</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start">
+                      <div className="w-12 h-12 bg-[#2FDAA9] rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <Phone className="w-6 h-6 text-[#151F34]" />
+                      </div>
+                      <div>
+                        <h4 className="font-inter-semibold mb-1">Phone</h4>
+                        <p className="text-gray-400 font-inter">+65 9123 4567</p>
+                        <p className="text-gray-400 font-inter">+65 6789 0123</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start">
+                      <div className="w-12 h-12 bg-[#2FDAA9] rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <MapPin className="w-6 h-6 text-[#151F34]" />
+                      </div>
+                      <div>
+                        <h4 className="font-inter-semibold mb-1">Address</h4>
+                        <p className="text-gray-400 font-inter">
+                          123 Business Street<br />
+                          Singapore 123456<br />
+                          Singapore
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start">
+                      <div className="w-12 h-12 bg-[#2FDAA9] rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <Clock className="w-6 h-6 text-[#151F34]" />
+                      </div>
+                      <div>
+                        <h4 className="font-inter-semibold mb-1">Business Hours</h4>
+                        <p className="text-gray-400 font-inter">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                        <p className="text-gray-400 font-inter">Saturday: 10:00 AM - 2:00 PM</p>
+                        <p className="text-gray-400 font-inter">Sunday: Closed</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-[#2850E5] rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                    <Phone className="w-6 h-6 text-white" />
+                {/* Quick Contact */}
+                                 <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                   <h3 className="text-xl font-inter-semibold mb-6 brand-accent">Quick Contact</h3>
+                  <div className="space-y-4">
+                    <Button className="w-full bg-[#2FDAA9] hover:bg-[#2FDAA9]/90 text-[#151F34] font-inter-semibold">
+                      Schedule a Call
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                    <Button variant="outline" className="w-full border-[#2FDAA9] text-[#2FDAA9] hover:bg-[#2FDAA9] hover:text-[#151F34] font-inter-semibold">
+                      WhatsApp Chat
+                      <MessageSquare className="ml-2 h-4 w-4" />
+                    </Button>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-medium mb-2">Phone</h3>
-                    <p className="text-gray-400 mb-1">+65 (0) XXXX XXXX</p>
-                    <p className="text-gray-400">Mon-Fri: 9am-6pm SGT</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-[#2513FF] rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-medium mb-2">Office</h3>
-                    <p className="text-gray-400 mb-1">123 Digital Street</p>
-                    <p className="text-gray-400">Singapore 123456</p>
-                    <p className="text-gray-400">Singapore</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-[#FAFF83] rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                    <Clock className="w-6 h-6 text-[#151F34]" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-medium mb-2">Business Hours</h3>
-                    <p className="text-gray-400 mb-1">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                    <p className="text-gray-400">Saturday: 10:00 AM - 2:00 PM</p>
-                    <p className="text-gray-400">Sunday: Closed</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Quick Links */}
-              <div className="mt-12 p-6 bg-[#1a2a4a] rounded-lg">
-                <h3 className="text-xl font-medium mb-4">Quick Links</h3>
-                <div className="space-y-3">
-                  <Link href="/services" className="flex items-center text-gray-400 hover:text-[#2FDAA9] transition-colors">
-                    <ArrowRight className="w-4 h-4 mr-2" />
-                    View Our Services
-                  </Link>
-                  <Link href="/portfolio" className="flex items-center text-gray-400 hover:text-[#2FDAA9] transition-colors">
-                    <ArrowRight className="w-4 h-4 mr-2" />
-                    See Our Work
-                  </Link>
-                  <Link href="/about" className="flex items-center text-gray-400 hover:text-[#2FDAA9] transition-colors">
-                    <ArrowRight className="w-4 h-4 mr-2" />
-                    Learn About Us
-                  </Link>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FAQ Section */}
-      <section className="px-6 md:px-12 py-16 md:py-24 bg-[#1a2a4a]">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6">
-              Frequently Asked Questions
+        {/* FAQ Section */}
+        <section className="px-6 md:px-12 py-16 md:py-24 bg-[#1a2a4a]">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-inter-semibold mb-12 text-center">
+              Frequently Asked <span className="brand-accent font-inter-semibold">Questions</span>
             </h2>
-            <p className="text-xl text-gray-400">
-              Common questions about working with Elevar Digital Marketing
-            </p>
-          </div>
-
-          <div className="space-y-8">
-            <div className="bg-[#151F34] p-6 rounded-lg">
-              <h3 className="text-xl font-medium mb-4">How quickly can you start working on my project?</h3>
-              <p className="text-gray-400">
-                We typically begin projects within 1-2 weeks of contract signing. The exact timeline depends on project complexity and our current capacity.
-              </p>
-            </div>
-
-            <div className="bg-[#151F34] p-6 rounded-lg">
-              <h3 className="text-xl font-medium mb-4">What makes Elevar different from other agencies?</h3>
-              <p className="text-gray-400">
-                We deliver inclusive productivity as a managed service—combining affordable, practical solutions with social impact through mentorship and training.
-              </p>
-            </div>
-
-            <div className="bg-[#151F34] p-6 rounded-lg">
-              <h3 className="text-xl font-medium mb-4">Do you offer mentorship for aspiring marketers?</h3>
-              <p className="text-gray-400">
-                Yes, we provide hands-on experience through real client work under professional supervision, helping learners build confidence, skills, and career readiness.
-              </p>
-            </div>
-
-            <div className="bg-[#151F34] p-6 rounded-lg">
-              <h3 className="text-xl font-medium mb-4">What is your pricing structure?</h3>
-              <p className="text-gray-400">
-                We offer affordable, accessible pricing designed specifically for SMEs. Our services start from SGD 600/month, with transparent pricing and no hidden costs.
-              </p>
+                         <div className="space-y-6">
+               <div className="bg-[#151F34] p-6 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                 <h3 className="text-lg font-inter-semibold mb-3">How quickly can you start a project?</h3>
+                <p className="text-gray-400 font-inter">
+                  We typically start projects within 1-2 weeks of initial consultation. The timeline depends on project complexity and current team availability.
+                </p>
+              </div>
+                             <div className="bg-[#151F34] p-6 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                 <h3 className="text-lg font-inter-semibold mb-3">What are your pricing models?</h3>
+                <p className="text-gray-400 font-inter">
+                  We offer flexible pricing including project-based, monthly retainers, and performance-based models. Contact us for a customized quote.
+                </p>
+              </div>
+                             <div className="bg-[#151F34] p-6 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                 <h3 className="text-lg font-inter-semibold mb-3">Do you work with international clients?</h3>
+                <p className="text-gray-400 font-inter">
+                  Yes, we work with clients globally. While we're based in Singapore, we serve businesses worldwide with our digital marketing services.
+                </p>
+              </div>
+                             <div className="bg-[#151F34] p-6 rounded-lg border border-[#2FDAA9]/20 card-hover">
+                 <h3 className="text-lg font-inter-semibold mb-3">How do you ensure quality with supervised learners?</h3>
+                <p className="text-gray-400 font-inter">
+                  All work is reviewed and approved by experienced professionals before delivery. We maintain strict quality standards through our supervision process.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="px-6 md:px-12 py-8 border-t border-[#2850E5]">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center">
-            <Image 
-              src="/logo.png" 
-              alt="Elevar Digital Marketing" 
-              width={80} 
-              height={24} 
-              className="h-6 w-auto brightness-0 invert"
-            />
-          </div>
-          <div className="flex gap-6 text-sm text-gray-400">
-            <Link href="/privacy" className="hover:text-[#2FDAA9] transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-[#2FDAA9] transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="/contact" className="hover:text-[#2FDAA9] transition-colors">
-              Contact
-            </Link>
-          </div>
-        </div>
-      </footer>
+        </section>
+      </div>
     </div>
   )
 } 

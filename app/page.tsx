@@ -156,41 +156,52 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Right side - navigation */}
+          {/* Right side - contact button and hamburger menu */}
           <div className="flex-1 flex justify-end items-center gap-4">
             <Button
               variant="outline"
-              className="hidden md:inline-flex border-[#2850E5] text-white hover:bg-[#2513FF] bg-transparent"
+              className="border-[#2850E5] text-white hover:bg-[#2513FF] bg-transparent"
               asChild
             >
-              <Link href="/support">Support portal</Link>
+              <Link href="/contact">Contact Us</Link>
             </Button>
-
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-white focus-ring">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Toggle menu</span>
+                <Button variant="ghost" size="icon" className="text-white hover:text-[#2FDAA9] border border-[#2850E5]/20 hover:border-[#2FDAA9] p-2">
+                  <Menu className="h-8 w-8" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-[#151F34] border-[#2850E5]">
-                <nav className="flex flex-col gap-4 mt-8">
-                  <Link href="/services" className="text-lg hover:text-[#2FDAA9] transition-colors">
-                    Services
-                  </Link>
-                  <Link href="/portfolio" className="text-lg hover:text-[#2FDAA9] transition-colors">
-                    Portfolio
-                  </Link>
-                  <Link href="/about" className="text-lg hover:text-[#2FDAA9] transition-colors">
-                    About
-                  </Link>
-                  <Link href="/contact" className="text-lg hover:text-[#2FDAA9] transition-colors">
-                    Contact
-                  </Link>
-                  <Button variant="outline" className="mt-4 border-[#2850E5] text-white hover:bg-[#2513FF] bg-transparent" asChild>
-                    <Link href="/support">Support portal</Link>
-                  </Button>
-                </nav>
+              <SheetContent side="right" className="w-[300px] bg-[#151F34] border-l border-[#2850E5]/20">
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-center mb-8">
+                    <Image
+                      src="/logo.png"
+                      alt="Elevar"
+                      width={120}
+                      height={40}
+                      className="brightness-0 invert"
+                    />
+                  </div>
+                  <nav className="flex flex-col space-y-4">
+                    <Link href="/" className="text-white hover:text-[#2FDAA9] transition-colors font-inter">
+                      Home
+                    </Link>
+                    <Link href="/about" className="text-white hover:text-[#2FDAA9] transition-colors font-inter">
+                      About Us
+                    </Link>
+                    <Link href="/services" className="text-white hover:text-[#2FDAA9] transition-colors font-inter">
+                      Services
+                    </Link>
+                    <Link href="/contact" className="text-white hover:text-[#2FDAA9] transition-colors font-inter">
+                      Contact Us
+                    </Link>
+                  </nav>
+                  <div className="mt-auto">
+                    <Button className="w-full bg-[#2FDAA9] hover:bg-[#2FDAA9]/90 text-[#151F34] font-inter-semibold">
+                      Get Started
+                    </Button>
+                  </div>
+                </div>
               </SheetContent>
             </Sheet>
           </div>
@@ -444,7 +455,7 @@ export default function HomePage() {
             </div>
 
             {/* Step 2: Elevar Bridge */}
-            <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 relative animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-[#2FDAA9] rounded-full flex items-center justify-center mx-auto mb-4">
                   <Zap className="w-8 h-8 text-[#151F34]" />
@@ -468,18 +479,6 @@ export default function HomePage() {
                   Affordable pricing
                 </li>
               </ul>
-              
-              {/* Fixed Connection Lines */}
-              <div className="hidden lg:block absolute -left-12 top-1/2 transform -translate-y-1/2">
-                <div className="w-24 h-0.5 bg-[#2FDAA9] relative">
-                  <div className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-[6px] border-l-[#2FDAA9] border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent"></div>
-                </div>
-              </div>
-              <div className="hidden lg:block absolute -right-12 top-1/2 transform -translate-y-1/2">
-                <div className="w-24 h-0.5 bg-[#2FDAA9] relative">
-                  <div className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-[6px] border-l-[#2FDAA9] border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent"></div>
-                </div>
-              </div>
             </div>
 
             {/* Step 3: Learners */}

@@ -135,12 +135,14 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               // Navbar scroll animation
-              let lastScrollTop = 0;
               let navbar = null;
               
               function initNavbar() {
                 navbar = document.getElementById('navbar');
-                if (!navbar) return;
+                if (!navbar) {
+                  setTimeout(initNavbar, 100);
+                  return;
+                }
                 
                 window.addEventListener('scroll', function() {
                   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -157,8 +159,6 @@ export default function RootLayout({
                     navbar.style.transform = 'translateY(-100%)';
                     navbar.style.opacity = '0';
                   }
-                  
-                  lastScrollTop = scrollTop;
                 });
               }
               
@@ -168,6 +168,9 @@ export default function RootLayout({
               } else {
                 initNavbar();
               }
+              
+              // Also try to initialize after a short delay to ensure navbar exists
+              setTimeout(initNavbar, 500);
             `
           }}
         />
