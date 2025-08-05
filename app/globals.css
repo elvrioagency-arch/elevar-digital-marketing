@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-[#151F34];
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#2850E5] rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#2513FF];
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#2FDAA9] text-[#151F34] hover:bg-[#FAFF83] font-medium transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply border-[#2850E5] text-white hover:bg-[#2513FF] bg-transparent transition-colors duration-200;
+  }
+  
+  .section-padding {
+    @apply px-6 md:px-12 py-16 md:py-24;
+  }
+  
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-[#2FDAA9] to-[#FAFF83] bg-clip-text text-transparent;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl;
+  }
+  
+  .brand-accent {
+    @apply text-[#2FDAA9];
+  }
+  
+  .brand-primary {
+    @apply text-[#2850E5];
+  }
+  
+  .brand-secondary {
+    @apply text-[#2513FF];
+  }
+  
+  .brand-highlight {
+    @apply text-[#FAFF83];
+  }
+  
+  .brand-dark {
+    @apply text-[#151F34];
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+/* Loading states */
+.skeleton {
+  @apply animate-pulse bg-gray-700 rounded;
+}
+
+/* Focus styles for accessibility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-[#2FDAA9] focus:ring-offset-2 focus:ring-offset-[#151F34];
+} 
