@@ -137,12 +137,26 @@ export default function HomePage() {
       />
 
       {/* Header */}
-      <header className="flex h-20 w-full items-center justify-between px-6 md:px-12">
-        <Link href="/" className="text-2xl font-light hover:text-[#2FDAA9] transition-colors">
-          Elevar<span className="brand-accent">_</span>
-        </Link>
+      <header className="relative flex h-20 w-full items-center px-6 md:px-12">
+        {/* Left side - empty space */}
+        <div className="flex-1"></div>
+        
+        {/* Center - logo */}
+        <div className="absolute left-1/2 transform -translate-x-1/2">
+          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+            <Image 
+              src="/logo.png" 
+              alt="Elevar Digital Marketing" 
+              width={100} 
+              height={32} 
+              className="h-8 w-auto brightness-0 invert"
+              priority
+            />
+          </Link>
+        </div>
 
-        <div className="flex items-center gap-4">
+        {/* Right side - navigation */}
+        <div className="flex-1 flex justify-end items-center gap-4">
           <Button
             variant="outline"
             className="hidden md:inline-flex border-[#2850E5] text-white hover:bg-[#2513FF] bg-transparent"
@@ -482,8 +496,14 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="px-6 md:px-12 py-8 border-t border-[#2850E5]">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-2xl font-light">
-            Elevar<span className="brand-accent">_</span>
+          <div className="flex items-center">
+            <Image 
+              src="/logo.png" 
+              alt="Elevar Digital Marketing" 
+              width={80} 
+              height={24} 
+              className="h-6 w-auto brightness-0 invert"
+            />
           </div>
           <div className="flex gap-6 text-sm text-gray-400">
             <Link href="/privacy" className="hover:text-[#2FDAA9] transition-colors">
