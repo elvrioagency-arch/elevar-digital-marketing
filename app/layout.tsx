@@ -2,7 +2,12 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+  weight: ['300', '400', '500', '600'],
+})
 
 export const metadata: Metadata = {
   title: {
@@ -78,14 +83,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#000000" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+      </head>
+      <body className={`${inter.className} antialiased`}>
+        {children}
         
         {/* Structured Data */}
         <script
@@ -95,42 +100,77 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Elevar Digital Marketing",
-              "url": "https://elevar-digital.com",
-              "logo": "https://elevar-digital.com/logo.png",
-              "description": "Premier digital marketing agency specializing in web design, SEO, and conversion optimization",
-              "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "US"
-              },
+              "description": "AI-powered digital marketing solutions for SMEs in Singapore",
+              "url": "https://elevar.sg",
+              "logo": "https://elevar.sg/logo.png",
+              "sameAs": [
+                "https://linkedin.com/company/elevar-digital-marketing",
+                "https://facebook.com/elevardigitalmarketing"
+              ],
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+1-555-123-4567",
-                "contactType": "customer service"
+                "telephone": "+65-XXXX-XXXX",
+                "contactType": "customer service",
+                "areaServed": "SG",
+                "availableLanguage": "English"
               },
-              "sameAs": [
-                "https://www.facebook.com/elevardigital",
-                "https://www.linkedin.com/company/elevar-digital",
-                "https://twitter.com/elevardigital"
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Singapore",
+                "addressCountry": "SG"
+              },
+              "serviceType": [
+                "Digital Marketing",
+                "SEO Optimization", 
+                "Social Media Marketing",
+                "Content Creation",
+                "PPC Management"
               ]
             })
           }}
         />
-        
-        {/* Additional SEO Meta Tags */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="index, follow" />
-        <meta name="google" content="notranslate" />
-        <meta name="format-detection" content="telephone=no" />
-        
-        {/* Performance Optimizations */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-      </head>
-      <body className={inter.className}>
-        {children}
+
+        {/* Navbar Scroll Animation */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Navbar scroll animation
+              let lastScrollTop = 0;
+              let navbar = null;
+              
+              function initNavbar() {
+                navbar = document.getElementById('navbar');
+                if (!navbar) return;
+                
+                window.addEventListener('scroll', function() {
+                  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                  const windowHeight = window.innerHeight;
+                  const documentHeight = document.documentElement.scrollHeight;
+                  const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+                  
+                  // Stay visible until 25% scroll
+                  if (scrollPercent <= 25) {
+                    navbar.style.transform = 'translateY(0)';
+                    navbar.style.opacity = '1';
+                  } else {
+                    // Animate out after 25% scroll
+                    navbar.style.transform = 'translateY(-100%)';
+                    navbar.style.opacity = '0';
+                  }
+                  
+                  lastScrollTop = scrollTop;
+                });
+              }
+              
+              // Initialize when DOM is ready
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initNavbar);
+              } else {
+                initNavbar();
+              }
+            `
+          }}
+        />
       </body>
     </html>
   )

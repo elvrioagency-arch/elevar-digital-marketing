@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#151F34] text-white">
+    <div className="bg-[#151F34] text-white pt-20">
       {/* Structured Data for SEO */}
       <script
         type="application/ld+json"
@@ -137,115 +137,117 @@ export default function HomePage() {
       />
 
       {/* Header */}
-      <header className="relative flex h-20 w-full items-center px-6 md:px-12">
-        {/* Left side - empty space */}
-        <div className="flex-1"></div>
-        
-        {/* Center - logo */}
-        <div className="absolute left-1/2 transform -translate-x-1/2">
-          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
-            <Image 
-              src="/logo.png" 
-              alt="Elevar Digital Marketing" 
-              width={100} 
-              height={32} 
-              className="h-8 w-auto brightness-0 invert"
-              priority
-            />
-          </Link>
-        </div>
+      <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out" id="navbar">
+        <div className="relative flex h-20 w-full items-center px-6 md:px-12 bg-[#151F34]/95 backdrop-blur-sm border-b border-[#2850E5]/20">
+          {/* Left side - empty space */}
+          <div className="flex-1"></div>
+          
+          {/* Center - logo */}
+          <div className="absolute left-1/2 transform -translate-x-1/2">
+            <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+              <Image 
+                src="/logo.png" 
+                alt="Elevar Digital Marketing" 
+                width={100} 
+                height={32} 
+                className="h-8 w-auto brightness-0 invert"
+                priority
+              />
+            </Link>
+          </div>
 
-        {/* Right side - navigation */}
-        <div className="flex-1 flex justify-end items-center gap-4">
-          <Button
-            variant="outline"
-            className="hidden md:inline-flex border-[#2850E5] text-white hover:bg-[#2513FF] bg-transparent"
-            asChild
-          >
-            <Link href="/support">Support portal</Link>
-          </Button>
+          {/* Right side - navigation */}
+          <div className="flex-1 flex justify-end items-center gap-4">
+            <Button
+              variant="outline"
+              className="hidden md:inline-flex border-[#2850E5] text-white hover:bg-[#2513FF] bg-transparent"
+              asChild
+            >
+              <Link href="/support">Support portal</Link>
+            </Button>
 
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-white focus-ring">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="bg-[#151F34] border-[#2850E5]">
-              <nav className="flex flex-col gap-4 mt-8">
-                <Link href="/services" className="text-lg hover:text-[#2FDAA9] transition-colors">
-                  Services
-                </Link>
-                <Link href="/portfolio" className="text-lg hover:text-[#2FDAA9] transition-colors">
-                  Portfolio
-                </Link>
-                <Link href="/about" className="text-lg hover:text-[#2FDAA9] transition-colors">
-                  About
-                </Link>
-                <Link href="/contact" className="text-lg hover:text-[#2FDAA9] transition-colors">
-                  Contact
-                </Link>
-                <Button variant="outline" className="mt-4 border-[#2850E5] text-white hover:bg-[#2513FF] bg-transparent" asChild>
-                  <Link href="/support">Support portal</Link>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-white focus-ring">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle menu</span>
                 </Button>
-              </nav>
-            </SheetContent>
-          </Sheet>
+              </SheetTrigger>
+              <SheetContent side="right" className="bg-[#151F34] border-[#2850E5]">
+                <nav className="flex flex-col gap-4 mt-8">
+                  <Link href="/services" className="text-lg hover:text-[#2FDAA9] transition-colors">
+                    Services
+                  </Link>
+                  <Link href="/portfolio" className="text-lg hover:text-[#2FDAA9] transition-colors">
+                    Portfolio
+                  </Link>
+                  <Link href="/about" className="text-lg hover:text-[#2FDAA9] transition-colors">
+                    About
+                  </Link>
+                  <Link href="/contact" className="text-lg hover:text-[#2FDAA9] transition-colors">
+                    Contact
+                  </Link>
+                  <Button variant="outline" className="mt-4 border-[#2850E5] text-white hover:bg-[#2513FF] bg-transparent" asChild>
+                    <Link href="/support">Support portal</Link>
+                  </Button>
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </header>
 
       {/* Hero Section */}
       <section className="px-6 md:px-12 py-16 md:py-24">
         <div className="max-w-6xl">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight mb-12 text-balance">
-            We deliver <span className="brand-accent">inclusive productivity</span> as a managed service—giving you consistent digital marketing outcomes, reduced operational hassle, and measurable social impact. All in one subscription.
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-inter-semibold leading-tight mb-12 text-balance tracking-tight">
+            We deliver <span className="brand-accent font-inter-semibold animate-highlight-pulse" style={{animation: 'highlightPulse 3s ease-in-out infinite'}}>productivity</span> through digital marketing solutions.
           </h1>
 
           {/* Value Proposition */}
           <div className="mb-16">
-            <div className="text-lg mb-2">Our AI-powered micro-workforce completes real work (content, campaigns, analytics), guided by experts and delivered to you on time—while also contributing to Singapore's inclusive economy.</div>
-            <div className="text-gray-400 mb-1">Practical, accessible, and results-oriented marketing solutions</div>
-            <div className="text-gray-400">For SMEs and aspiring marketers</div>
+            <div className="text-lg mb-3 font-inter leading-relaxed">AI-powered digital marketing for SMEs in Singapore.</div>
+            <div className="text-gray-400 mb-1 font-inter">Practical solutions for growing businesses.</div>
+            <div className="text-gray-400 font-inter">For SMEs and aspiring marketers.</div>
           </div>
 
           {/* Decorative line with dot */}
-          <div className="relative mb-16">
+          <div className="relative mb-8">
             <div className="h-px bg-[#2850E5] w-full"></div>
             <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#2FDAA9] rounded-full"></div>
           </div>
-        </div>
-      </section>
 
-      {/* Statistics Section */}
-      <section className="px-6 md:px-12 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl">
-          <div className="animate-fade-in-up">
-            <div className="text-4xl md:text-5xl font-light mb-4 brand-accent">100+</div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              SMEs empowered with practical digital marketing solutions
-            </p>
-          </div>
+          {/* Statistics Section - Part of Hero */}
+          <div className="mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+              <div className="animate-fade-in-up text-center">
+                <div className="text-4xl md:text-5xl font-inter-semibold mb-3 brand-accent">100+</div>
+                <p className="text-gray-400 text-sm leading-relaxed font-inter">
+                  SMEs empowered with practical digital marketing solutions
+                </p>
+              </div>
 
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            <div className="text-4xl md:text-5xl font-light mb-4 brand-accent">50+</div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Aspiring marketers trained through real client work
-            </p>
-          </div>
+              <div className="animate-fade-in-up text-center" style={{ animationDelay: '0.1s' }}>
+                <div className="text-4xl md:text-5xl font-inter-semibold mb-3 brand-accent">50+</div>
+                <p className="text-gray-400 text-sm leading-relaxed font-inter">
+                  Aspiring marketers trained through real client work
+                </p>
+              </div>
 
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <div className="text-4xl md:text-5xl font-light mb-4 brand-accent">95%</div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Client satisfaction rate with our managed service approach
-            </p>
-          </div>
+              <div className="animate-fade-in-up text-center" style={{ animationDelay: '0.2s' }}>
+                <div className="text-4xl md:text-5xl font-inter-semibold mb-3 brand-accent">95%</div>
+                <p className="text-gray-400 text-sm leading-relaxed font-inter">
+                  Client satisfaction rate with our managed service approach
+                </p>
+              </div>
 
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            <div className="text-4xl md:text-5xl font-light mb-4 brand-accent">24/7</div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Support and guidance for both clients and learners
-            </p>
+              <div className="animate-fade-in-up text-center" style={{ animationDelay: '0.3s' }}>
+                <div className="text-4xl md:text-5xl font-inter-semibold mb-3 brand-accent">24/7</div>
+                <p className="text-gray-400 text-sm leading-relaxed font-inter">
+                  Support and guidance for both clients and learners
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -254,10 +256,10 @@ export default function HomePage() {
       <section className="px-6 md:px-12 py-16 md:py-24 bg-[#1a2a4a]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6">
-              Three interconnected functions, <span className="brand-accent">one unified brand</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-inter-semibold mb-6">
+              Three interconnected functions, <span className="brand-accent font-inter-semibold">one unified brand</span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto font-inter">
               Elevar bridges the gap between marketing education and industry application
             </p>
           </div>
@@ -267,11 +269,11 @@ export default function HomePage() {
               <div className="w-16 h-16 bg-[#2FDAA9] rounded-lg flex items-center justify-center mb-6">
                 <Target className="w-8 h-8 text-[#151F34]" />
               </div>
-              <h3 className="text-2xl font-medium mb-4 brand-accent">Agency</h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">
+              <h3 className="text-2xl font-inter-semibold mb-4 brand-accent">Agency</h3>
+              <p className="text-gray-400 mb-6 leading-relaxed font-inter">
                 Provides SMEs with practical digital marketing services executed by our supervised marketing team.
               </p>
-              <ul className="space-y-3 text-sm text-gray-300">
+              <ul className="space-y-3 text-sm text-gray-300 font-inter">
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
                   WordPress development
@@ -288,48 +290,48 @@ export default function HomePage() {
             </div>
 
             <div className="bg-[#151F34] p-8 rounded-lg card-hover">
-              <div className="w-16 h-16 bg-[#2850E5] rounded-lg flex items-center justify-center mb-6">
-                <Lightbulb className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-[#2FDAA9] rounded-lg flex items-center justify-center mb-6">
+                <Lightbulb className="w-8 h-8 text-[#151F34]" />
               </div>
-              <h3 className="text-2xl font-medium mb-4 brand-primary">Consultancy</h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">
+              <h3 className="text-2xl font-inter-semibold mb-4 brand-accent">Consultancy</h3>
+              <p className="text-gray-400 mb-6 leading-relaxed font-inter">
                 Offers strategic guidance, audits, and digital planning to help businesses understand and act on what matters most.
               </p>
-              <ul className="space-y-3 text-sm text-gray-300">
+              <ul className="space-y-3 text-sm text-gray-300 font-inter">
                 <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-[#2850E5] mr-3 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
                   Strategic guidance
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-[#2850E5] mr-3 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
                   Digital audits
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-[#2850E5] mr-3 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
                   Digital planning
                 </li>
               </ul>
             </div>
 
             <div className="bg-[#151F34] p-8 rounded-lg card-hover">
-              <div className="w-16 h-16 bg-[#2513FF] rounded-lg flex items-center justify-center mb-6">
-                <BookOpen className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-[#2FDAA9] rounded-lg flex items-center justify-center mb-6">
+                <BookOpen className="w-8 h-8 text-[#151F34]" />
               </div>
-              <h3 className="text-2xl font-medium mb-4 brand-secondary">Mentorship</h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">
+              <h3 className="text-2xl font-inter-semibold mb-4 brand-accent">Mentorship</h3>
+              <p className="text-gray-400 mb-6 leading-relaxed font-inter">
                 Trains aspiring marketers through real client work under professional supervision, ensuring quality outcomes for clients and growth for learners.
               </p>
-              <ul className="space-y-3 text-sm text-gray-300">
+              <ul className="space-y-3 text-sm text-gray-300 font-inter">
                 <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-[#2513FF] mr-3 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
                   Hands-on experience
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-[#2513FF] mr-3 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
                   Professional supervision
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-[#2513FF] mr-3 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
                   Career readiness
                 </li>
               </ul>
@@ -373,25 +375,25 @@ export default function HomePage() {
           {/* Secondary Audience */}
           <div className="space-y-8 animate-slide-in-right">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
-              For <span className="brand-primary">aspiring marketers</span>
+              For <span className="brand-accent">aspiring marketers</span>
             </h2>
             
             <div className="bg-[#1a2a4a] p-6 rounded-lg">
-              <h3 className="text-xl font-medium brand-primary mb-3">Learners, interns & apprentices</h3>
+              <h3 className="text-xl font-medium brand-accent mb-3">Learners, interns & apprentices</h3>
               <p className="text-gray-300 leading-relaxed">
                 University students, bootcamp graduates, and self-learners seeking hands-on experience in WordPress development, SEO, social media marketing, content creation, and paid advertising.
               </p>
             </div>
 
             <div className="bg-[#1a2a4a] p-6 rounded-lg">
-              <h3 className="text-xl font-medium brand-primary mb-3">Career changers</h3>
+              <h3 className="text-xl font-medium brand-accent mb-3">Career changers</h3>
               <p className="text-gray-300 leading-relaxed">
                 Professionals transitioning into digital marketing who need practical experience to complement their theoretical knowledge.
               </p>
             </div>
 
             <div className="bg-[#1a2a4a] p-6 rounded-lg">
-              <h3 className="text-xl font-medium brand-primary mb-3">Guided, hands-on experience</h3>
+              <h3 className="text-xl font-medium brand-accent mb-3">Guided, hands-on experience</h3>
               <p className="text-gray-300 leading-relaxed">
                 Real client work under professional supervision that builds confidence, skills, and career readiness.
               </p>
@@ -400,69 +402,139 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Process Diagram Section */}
       <section className="px-6 md:px-12 py-16 md:py-24 bg-[#1a2a4a]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6">
-              What our clients and learners say
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-inter-semibold mb-6">
+              How <span className="brand-accent font-inter-semibold">inclusive productivity</span> works
             </h2>
-            <p className="text-xl text-gray-400">
-              Don't just take our word for it—hear from SMEs and aspiring marketers
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto font-inter">
+              Our unique three-in-one model creates a sustainable ecosystem where everyone wins
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-[#151F34] p-6 rounded-lg">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-[#2FDAA9] fill-current" />
-                ))}
+          {/* Process Flow Diagram */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            {/* Step 1: SMEs */}
+            <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 animate-fade-in-up">
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-[#2FDAA9] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-[#151F34]" />
+                </div>
+                <h3 className="text-2xl font-inter-semibold mb-3 brand-accent">SMEs Need Marketing</h3>
+                <p className="text-gray-400 font-inter">
+                  Small businesses need digital marketing but can't afford agency prices
+                </p>
               </div>
-              <p className="text-gray-300 mb-4">
-                "Elevar helped us establish our digital presence without breaking the bank. The team's practical approach and affordable solutions were exactly what we needed."
-              </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-[#2FDAA9] rounded-full mr-4"></div>
-                <div>
-                  <div className="font-medium">Sarah Lim</div>
-                  <div className="text-sm text-gray-400">Founder, Local Bakery</div>
+              <ul className="space-y-2 text-sm text-gray-300 font-inter">
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                  Limited marketing budget
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                  Need practical solutions
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                  Want measurable results
+                </li>
+              </ul>
+            </div>
+
+            {/* Step 2: Elevar Bridge */}
+            <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 relative animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-[#2FDAA9] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Zap className="w-8 h-8 text-[#151F34]" />
+                </div>
+                <h3 className="text-2xl font-inter-semibold mb-3 brand-accent">Elevar Connects</h3>
+                <p className="text-gray-400 font-inter">
+                  We bridge the gap with supervised learners and expert guidance
+                </p>
+              </div>
+              <ul className="space-y-2 text-sm text-gray-300 font-inter">
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                  Professional supervision
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                  Quality assurance
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                  Affordable pricing
+                </li>
+              </ul>
+              
+              {/* Fixed Connection Lines */}
+              <div className="hidden lg:block absolute -left-12 top-1/2 transform -translate-y-1/2">
+                <div className="w-24 h-0.5 bg-[#2FDAA9] relative">
+                  <div className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-[6px] border-l-[#2FDAA9] border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent"></div>
+                </div>
+              </div>
+              <div className="hidden lg:block absolute -right-12 top-1/2 transform -translate-y-1/2">
+                <div className="w-24 h-0.5 bg-[#2FDAA9] relative">
+                  <div className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-[6px] border-l-[#2FDAA9] border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent"></div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-[#151F34] p-6 rounded-lg">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-[#2850E5] fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-300 mb-4">
-                "The mentorship program gave me real-world experience I couldn't get anywhere else. I'm now confident in my digital marketing skills."
-              </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-[#2850E5] rounded-full mr-4"></div>
-                <div>
-                  <div className="font-medium">Alex Chen</div>
-                  <div className="text-sm text-gray-400">Marketing Graduate</div>
+            {/* Step 3: Learners */}
+            <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-[#2FDAA9] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <BookOpen className="w-8 h-8 text-[#151F34]" />
                 </div>
+                <h3 className="text-2xl font-inter-semibold mb-3 brand-accent">Learners Get Experience</h3>
+                <p className="text-gray-400 font-inter">
+                  Aspiring marketers work on real projects under expert supervision
+                </p>
               </div>
+              <ul className="space-y-2 text-sm text-gray-300 font-inter">
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                  Real client projects
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                  Professional guidance
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-[#2FDAA9] mr-3 flex-shrink-0" />
+                  Career readiness
+                </li>
+              </ul>
             </div>
+          </div>
 
-            <div className="bg-[#151F34] p-6 rounded-lg">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-[#2513FF] fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-300 mb-4">
-                "As a career changer, the hands-on experience with real clients was invaluable. Elevar's approach made the transition smooth and practical."
-              </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-[#2513FF] rounded-full mr-4"></div>
-                <div>
-                  <div className="font-medium">Maria Rodriguez</div>
-                  <div className="text-sm text-gray-400">Former Teacher, Now Marketer</div>
+          {/* Results Section */}
+          <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+            <div className="bg-[#151F34] p-8 rounded-lg border border-[#2FDAA9]/20 max-w-4xl mx-auto">
+              <h3 className="text-2xl font-inter-semibold mb-4 brand-accent">Everyone Wins</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-[#2FDAA9] rounded-full flex items-center justify-center mx-auto mb-3">
+                    <TrendingUp className="w-6 h-6 text-[#151F34]" />
+                  </div>
+                  <h4 className="font-inter-semibold mb-2">SMEs Get Results</h4>
+                  <p className="text-sm text-gray-400 font-inter">Quality marketing at affordable prices</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-[#2FDAA9] rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Award className="w-6 h-6 text-[#151F34]" />
+                  </div>
+                  <h4 className="font-inter-semibold mb-2">Learners Get Skills</h4>
+                  <p className="text-sm text-gray-400 font-inter">Real experience and career growth</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-[#2FDAA9] rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Heart className="w-6 h-6 text-[#151F34]" />
+                  </div>
+                  <h4 className="font-inter-semibold mb-2">Society Benefits</h4>
+                  <p className="text-sm text-gray-400 font-inter">Inclusive economy and social impact</p>
                 </div>
               </div>
             </div>
